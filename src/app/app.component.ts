@@ -1,3 +1,4 @@
+import { Post } from './models/post';
 import { Component } from '@angular/core';
 
 @Component({
@@ -5,6 +6,12 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent {
-  title = 'app';
+
+  posts = new Array<Post>();
+
+  constructor() {
+
+  }
 }
