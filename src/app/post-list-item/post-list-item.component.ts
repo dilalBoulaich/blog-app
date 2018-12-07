@@ -23,12 +23,12 @@ export class PostListItemComponent implements OnInit {
   }
 
   downVote() {
-    this.post.dontLoveIts ++;
+    this.post.loveIts --;
     this.checkPostSuccessfulness();
   }
 
   checkPostSuccessfulness() {
-    this.isSuccessfulPost = this.post.loveIts > 0 && this.post.loveIts > this.post.dontLoveIts ? true : false;
+    this.isSuccessfulPost = this.post.loveIts > 0 ? true : false;
   }
 
 }

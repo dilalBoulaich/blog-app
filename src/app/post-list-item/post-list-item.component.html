@@ -3,7 +3,6 @@
     <h3 class='post-date'>{{ post.created_at | date :'short' }}</h3>
     <h1>{{ post.title }}</h1>
     <p>{{ post.content }}</p><br>
-    <button (click)="upVote()"><img src="assets/like.png" width="30"></button><span>{{post.loveIts}}</span>&nbsp;&nbsp;
-    <button (click)="downVote()"><img src="assets/dislike.png" width="30"></button><span>{{post.dontLoveIts}}</span>
+    <button (click)="upVote()"><img src="assets/like.png" width="30"></button>&nbsp;<span>{{post.loveIts}}</span>&nbsp;<button (click)="downVote()"><img src="assets/dislike.png" width="30"></button>
   </div>
 </li>
