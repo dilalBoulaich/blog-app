@@ -1,3 +1,9 @@
-<p>
-  post-list-item works!
-</p>
+<li [ngClass]="{'list-group-item-success': isSuccessfulPost, 'list-group-item-danger': !isSuccessfulPost}">
+  <div *ngIf="post" class="post-item">
+    <h3 class='post-date'>{{ post.created_at | date :'short' }}</h3>
+    <h1>{{ post.title }}</h1>
+    <p>{{ post.content }}</p><br>
+    <button (click)="upVote()"><img src="assets/like.png" width="30"></button><span>{{post.loveIts}}</span>&nbsp;&nbsp;
+    <button (click)="downVote()"><img src="assets/dislike.png" width="30"></button><span>{{post.dontLoveIts}}</span>
+  </div>
+</li>
