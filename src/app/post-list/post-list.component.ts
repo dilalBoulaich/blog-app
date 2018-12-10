@@ -1,7 +1,8 @@
 import { post } from 'selenium-webdriver/http';
+import { DataService } from './../services/data.service';
 import { Post } from './../models/post';
 import { Component, OnInit, Input } from '@angular/core';
-import { parseHostBindings } from '@angular/compiler';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-post-list',
@@ -11,11 +12,20 @@ import { parseHostBindings } from '@angular/compiler';
 
 export class PostListComponent implements OnInit {
 
-  @Input() posts: Post[];
+  posts = new Array<Post>();
+  postSubscription: Subscription;
 
-  constructor() { }
+  constructor(private dataService: DataService) { }
 
   ngOnInit() {
+    this.postSubscription = this.dataService.postsSubject.subscribe((data) => {
+      this.posts = data;
+    });
+    this.dataService.emitPostSubject();
+  }
+
+  ngOnDestroy() {
+    this.postSubscription.unsubscribe();
   }
 
 }

@@ -1,3 +1,4 @@
+import { DataService } from './../services/data.service';
 import { Post } from './../models/post';
 import { Component, OnInit, Input } from '@angular/core';
 
@@ -11,7 +12,7 @@ export class PostListItemComponent implements OnInit {
   @Input() post: Post;
   isSuccessfulPost: boolean;
 
-  constructor() { }
+  constructor(private dataService: DataService) { }
 
   ngOnInit() {
     this.checkPostSuccessfulness();
@@ -25,6 +26,10 @@ export class PostListItemComponent implements OnInit {
   downVote() {
     this.post.loveIts --;
     this.checkPostSuccessfulness();
+  }
+
+  removePost(post: Post) {
+    this.dataService.deletePost(post);
   }
 
   checkPostSuccessfulness() {
